@@ -112,11 +112,11 @@ function ProjectCard({ project, index }) {
       />
 
       <div
-        className={`relative h-full rounded-2xl border border-white/[0.06] ${project.borderHover}
-          bg-white/[0.02] backdrop-blur-md overflow-hidden
+        className={`relative h-full rounded-2xl border border-white/10
+          bg-neutral-900/50 backdrop-blur-sm overflow-hidden
           transition-all duration-500 ease-out
-          group-hover:bg-white/[0.04] group-hover:shadow-[0_8px_60px_rgba(0,0,0,0.4)]
-          group-hover:border-white/[0.15]`}
+          group-hover:bg-neutral-900/70 group-hover:shadow-[0_8px_60px_rgba(0,0,0,0.4)]
+          group-hover:border-white/20`}
       >
         {/* Top gradient strip */}
         <div
@@ -124,7 +124,7 @@ function ProjectCard({ project, index }) {
         />
 
         {/* Inner content */}
-        <div className="relative p-7 sm:p-8 flex flex-col h-full">
+        <div className="relative p-8 flex flex-col h-full">
           {/* Header row */}
           <div className="flex items-start justify-between mb-5">
             <div className="flex items-center gap-2.5">
@@ -227,12 +227,12 @@ export default function Work() {
           <h2 className="text-[clamp(1.8rem,4vw,3rem)] font-extrabold tracking-[-0.03em] text-white leading-[1.1]">
             Projects that define
             <br />
-            <span className="text-[#555]">my craft.</span>
+            <span className="text-neutral-400">my craft.</span>
           </h2>
         </motion.div>
 
         {/* ── Project Grid ── */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {projects.map((project, i) => (
             <ProjectCard key={project.id} project={project} index={i} />
           ))}

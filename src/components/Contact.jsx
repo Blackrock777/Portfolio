@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 
 /* ─── Animation Variants ─── */
@@ -16,67 +16,6 @@ const fadeUp = {
     transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] },
   },
 };
-
-/* ─── Floating Input ─── */
-function FloatingInput({ id, label, type = 'text', isTextarea = false }) {
-  const [focused, setFocused] = useState(false);
-  const [value, setValue] = useState('');
-  const active = focused || value.length > 0;
-
-  const sharedClasses = `
-    peer w-full bg-transparent text-white/90 text-[15px] font-normal
-    pt-6 pb-3 border-b transition-all duration-500 outline-none
-    ${focused
-      ? 'border-white/30 shadow-[0_2px_15px_rgba(255,255,255,0.06)]'
-      : 'border-white/[0.08] hover:border-white/[0.14]'
-    }
-  `;
-
-  const labelClasses = `
-    absolute left-0 transition-all duration-300 pointer-events-none
-    ${active
-      ? 'top-0 text-[11px] tracking-[0.08em] uppercase font-medium text-white/40'
-      : 'top-5 text-[15px] text-[#555]'
-    }
-  `;
-
-  return (
-    <motion.div variants={fadeUp} className="relative">
-      {isTextarea ? (
-        <textarea
-          id={id}
-          name={id}
-          rows={4}
-          value={value}
-          onFocus={() => setFocused(true)}
-          onBlur={() => setFocused(false)}
-          onChange={(e) => setValue(e.target.value)}
-          className={`${sharedClasses} resize-none`}
-        />
-      ) : (
-        <input
-          id={id}
-          name={id}
-          type={type}
-          value={value}
-          onFocus={() => setFocused(true)}
-          onBlur={() => setFocused(false)}
-          onChange={(e) => setValue(e.target.value)}
-          className={sharedClasses}
-        />
-      )}
-      <label htmlFor={id} className={labelClasses}>
-        {label}
-      </label>
-      {/* Glow line */}
-      <div
-        className={`absolute bottom-0 left-0 h-[1.5px] bg-gradient-to-r from-purple-400/70 via-cyan-400/70 to-emerald-400/70 transition-all duration-500 ${
-          focused ? 'w-full opacity-100' : 'w-0 opacity-0'
-        }`}
-      />
-    </motion.div>
-  );
-}
 
 /* ─── Contact Section ─── */
 export default function Contact() {
@@ -136,14 +75,14 @@ export default function Contact() {
         >
           LET'S BUILD
           <br />
-          <span className="bg-gradient-to-r from-purple-300 via-cyan-300 to-emerald-300 bg-clip-text text-transparent">
+          <span className="text-white">
             SOMETHING.
           </span>
         </motion.h2>
 
         <motion.p
           variants={fadeUp}
-          className="text-[clamp(0.95rem,1.5vw,1.05rem)] leading-relaxed text-[#666] mb-14 max-w-lg"
+          className="text-[clamp(0.95rem,1.5vw,1.05rem)] leading-relaxed text-neutral-500 mb-14 max-w-lg"
         >
           Have an idea, a project, or just want to connect? Drop me a line and
           let's make it happen.
@@ -153,32 +92,53 @@ export default function Contact() {
         <form
           id="contact-form"
           onSubmit={(e) => e.preventDefault()}
-          className="space-y-10"
+          className="flex flex-col gap-8"
         >
-          <FloatingInput id="contact-name" label="Your Name" />
-          <FloatingInput
-            id="contact-email"
-            label="Email Address"
-            type="email"
-          />
-          <FloatingInput
-            id="contact-message"
-            label="Your Message"
-            isTextarea
-          />
+          {/* Name */}
+          <motion.div variants={fadeUp}>
+            <input
+              id="contact-name"
+              name="name"
+              type="text"
+              placeholder="Your Name"
+              className="w-full bg-transparent border-b border-neutral-700 pb-3 text-white placeholder:text-neutral-500 focus:outline-none focus:border-white transition-colors duration-300"
+            />
+          </motion.div>
+
+          {/* Email */}
+          <motion.div variants={fadeUp}>
+            <input
+              id="contact-email"
+              name="email"
+              type="email"
+              placeholder="Email Address"
+              className="w-full bg-transparent border-b border-neutral-700 pb-3 text-white placeholder:text-neutral-500 focus:outline-none focus:border-white transition-colors duration-300"
+            />
+          </motion.div>
+
+          {/* Message */}
+          <motion.div variants={fadeUp}>
+            <textarea
+              id="contact-message"
+              name="message"
+              rows={4}
+              placeholder="Your Message"
+              className="w-full bg-transparent border-b border-neutral-700 pb-3 text-white placeholder:text-neutral-500 focus:outline-none focus:border-white transition-colors duration-300 resize-none"
+            />
+          </motion.div>
 
           {/* Submit Button */}
-          <motion.div variants={fadeUp}>
+          <motion.div variants={fadeUp} className="pt-4">
             <motion.button
               type="submit"
               id="contact-submit"
-              className="group relative inline-flex items-center gap-3 px-10 py-4 rounded-full bg-white text-[#0A0A0A] text-[15px] font-semibold transition-all duration-300 hover:shadow-[0_0_50px_rgba(255,255,255,0.12)] cursor-pointer"
+              className="flex items-center justify-center gap-2 rounded-full px-8 py-3 bg-white text-black text-[15px] font-semibold transition-all duration-300 hover:shadow-[0_0_50px_rgba(255,255,255,0.12)] cursor-pointer"
               whileHover={{ y: -3, scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
             >
-              Send Message
+              <span>Send Message</span>
               <svg
-                className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-0.5"
+                className="w-4 h-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"

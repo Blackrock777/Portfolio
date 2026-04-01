@@ -63,7 +63,7 @@ export default function SkillsMarquee() {
   return (
     <section
       id="skills-marquee"
-      className="relative py-14 sm:py-20 overflow-hidden"
+      className="relative py-32 overflow-hidden"
       style={{ backgroundColor: '#0A0A0A' }}
       aria-label="Core skills marquee"
     >

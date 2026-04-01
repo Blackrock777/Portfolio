@@ -7,31 +7,16 @@ const stats = [
     id: 1,
     value: '80+',
     label: 'Enterprise Accounts Analyzed',
-    accent: 'purple',
-    dotColor: 'bg-purple-400',
-    borderHover: 'group-hover:border-purple-400/30',
-    glowColor: 'rgba(168, 85, 247, 0.06)',
-    gradientTop: 'from-purple-500/20 via-violet-500/10 to-transparent',
   },
   {
     id: 2,
     value: 'C-Suite',
     label: 'Technical Pitching',
-    accent: 'cyan',
-    dotColor: 'bg-cyan-400',
-    borderHover: 'group-hover:border-cyan-400/30',
-    glowColor: 'rgba(34, 211, 238, 0.06)',
-    gradientTop: 'from-cyan-500/20 via-sky-500/10 to-transparent',
   },
   {
     id: 3,
     value: 'Full-Cycle',
     label: 'Outbound Sales',
-    accent: 'emerald',
-    dotColor: 'bg-emerald-400',
-    borderHover: 'group-hover:border-emerald-400/30',
-    glowColor: 'rgba(52, 211, 153, 0.06)',
-    gradientTop: 'from-emerald-500/20 via-teal-500/10 to-transparent',
   },
 ];
 
@@ -51,56 +36,23 @@ const fadeUp = {
   },
 };
 
-const floatAnimation = (i) => ({
-  y: [0, -6 - i * 2, 0],
-  transition: {
-    duration: 4.5 + i * 0.8,
-    repeat: Infinity,
-    repeatType: 'loop',
-    ease: 'easeInOut',
-  },
-});
-
-/* ─── Stat Card ─── */
-function StatCard({ stat, index }) {
+/* ─── Stat Card (Clean Glass Panel) ─── */
+function StatCard({ stat }) {
   return (
     <motion.div
       variants={fadeUp}
-      animate={floatAnimation(index)}
       whileHover={{
-        y: 0,
-        scale: 1.02,
+        y: -4,
+        scale: 1.015,
         transition: { duration: 0.35, ease: 'easeOut' },
       }}
-      className="group relative"
+      className="group"
     >
-      {/* Ambient glow */}
-      <div
-        className="absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl pointer-events-none"
-        style={{ background: stat.glowColor }}
-      />
-
-      <div
-        className={`relative rounded-2xl border border-white/[0.06] ${stat.borderHover}
-          bg-white/[0.02] backdrop-blur-md overflow-hidden
-          transition-all duration-500 ease-out
-          group-hover:bg-white/[0.04] group-hover:shadow-[0_8px_50px_rgba(0,0,0,0.35)]
-          group-hover:border-white/[0.12] p-6 sm:p-7`}
-      >
-        {/* Top gradient strip */}
-        <div
-          className={`absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r ${stat.gradientTop} opacity-50 group-hover:opacity-100 transition-opacity duration-500`}
-        />
-
-        <div className="flex items-start gap-3 mb-3">
-          <span
-            className={`mt-1.5 w-2 h-2 rounded-full ${stat.dotColor} opacity-60 group-hover:opacity-100 transition-opacity duration-300 shrink-0`}
-          />
-          <span className="text-[clamp(1.8rem,3vw,2.4rem)] font-extrabold tracking-[-0.03em] text-white/90 leading-none group-hover:text-white transition-colors duration-300">
-            {stat.value}
-          </span>
-        </div>
-        <p className="text-[14px] leading-relaxed text-[#666] group-hover:text-[#999] transition-colors duration-300 pl-5">
+      <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-6 transition-all duration-500 group-hover:bg-white/[0.08] group-hover:border-white/20">
+        <span className="block text-[clamp(1.8rem,3vw,2.4rem)] font-extrabold tracking-[-0.03em] text-white/90 leading-none mb-2 group-hover:text-white transition-colors duration-300">
+          {stat.value}
+        </span>
+        <p className="text-[14px] leading-relaxed text-neutral-500 group-hover:text-neutral-400 transition-colors duration-300">
           {stat.label}
         </p>
       </div>
@@ -117,7 +69,7 @@ export default function Expertise() {
     <section
       id="expertise"
       ref={sectionRef}
-      className="relative py-32 sm:py-40 overflow-hidden"
+      className="relative pt-32 pb-32 sm:pt-40 sm:pb-40 mt-32 overflow-hidden"
       style={{ backgroundColor: '#0A0A0A' }}
     >
       {/* Top divider */}
@@ -151,25 +103,25 @@ export default function Expertise() {
         </motion.div>
 
         {/* ── Two-Column Layout ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
           {/* Left column — Heading + copy */}
           <motion.div variants={fadeUp}>
             <h2 className="text-[clamp(2rem,4.5vw,3.2rem)] font-extrabold tracking-[-0.04em] leading-[1.05] text-white mb-7">
               FROM CODE
               <br />
-              <span className="bg-gradient-to-r from-cyan-300 via-purple-300 to-emerald-300 bg-clip-text text-transparent">
+              <span className="text-white">
                 TO CLOSING.
               </span>
             </h2>
 
-            <p className="text-[clamp(0.95rem,1.6vw,1.1rem)] leading-[1.75] text-[#777] max-w-lg">
+            <p className="text-[clamp(0.95rem,1.6vw,1.1rem)] leading-loose text-neutral-500 max-w-lg">
               With a foundation in software engineering and hands-on experience
               in B2B technical sales, I don't just write code—I build products
               that scale and sell.
             </p>
-            <p className="mt-5 text-[clamp(0.95rem,1.6vw,1.1rem)] leading-[1.75] text-[#555] max-w-lg">
+            <p className="mt-5 text-[clamp(0.95rem,1.6vw,1.1rem)] leading-loose text-neutral-600 max-w-lg">
               Cultivated extreme discipline as a{' '}
-              <span className="text-[#999] font-medium">
+              <span className="text-neutral-300 font-medium">
                 National-Level 10m Pistol Shooter.
               </span>
             </p>
@@ -178,10 +130,10 @@ export default function Expertise() {
             <div className="mt-10 h-px w-24 bg-gradient-to-r from-white/15 to-transparent" />
           </motion.div>
 
-          {/* Right column — Stat cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-5">
-            {stats.map((stat, i) => (
-              <StatCard key={stat.id} stat={stat} index={i} />
+          {/* Right column — Stat cards in clean vertical stack */}
+          <div className="flex flex-col gap-6 w-full max-w-sm lg:ml-auto">
+            {stats.map((stat) => (
+              <StatCard key={stat.id} stat={stat} />
             ))}
           </div>
         </div>

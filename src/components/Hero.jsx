@@ -93,13 +93,13 @@ export default function Hero() {
           <motion.a
             href="#work"
             id="cta-view-work"
-            className="group inline-flex items-center gap-2.5 rounded-full px-8 py-3 bg-white text-black text-[15px] font-semibold transition-all duration-300 hover:shadow-[0_0_40px_rgba(255,255,255,0.12)]"
+            className="group flex items-center justify-center gap-2 rounded-full px-8 py-3 bg-white text-black text-[15px] font-semibold transition-all duration-300 hover:shadow-[0_0_40px_rgba(255,255,255,0.12)]"
             whileHover={{ y: -3, scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
           >
             View Work
             <svg
-              className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+              className="w-4 h-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -117,13 +117,13 @@ export default function Hero() {
           <motion.a
             href="#contact"
             id="cta-lets-talk"
-            className="group inline-flex items-center gap-2.5 rounded-full px-8 py-3 text-[15px] font-semibold text-white border border-white/20 bg-transparent transition-all duration-300 hover:border-white/40 hover:bg-white/[0.04]"
+            className="group flex items-center justify-center gap-2 rounded-full px-8 py-3 text-[15px] font-semibold text-white border border-white/20 bg-transparent transition-all duration-300 hover:border-white/40 hover:bg-white/[0.04]"
             whileHover={{ y: -3, scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
           >
             Let's Talk
             <svg
-              className="w-4 h-4 transition-transform duration-300 group-hover:rotate-45"
+              className="w-4 h-4 shrink-0 transition-transform duration-300 group-hover:rotate-45"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
