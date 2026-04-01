@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+/* ─── Custom Design Tokens ─── */
+@theme {
+  --color-void: #0A0A0A;
+  --color-void-light: #111111;
+  --color-void-lighter: #1A1A1A;
+  --color-surface: #141414;
+  --color-surface-hover: #1E1E1E;
+  --color-border-glass: rgba(255, 255, 255, 0.08);
+  --color-text-primary: #FAFAFA;
+  --color-text-secondary: #888888;
+  --color-text-muted: #666666;
+  --color-accent-glow: rgba(120, 119, 198, 0.35);
+  --color-accent-cyan: rgba(34, 211, 238, 0.25);
+  --color-accent-emerald: rgba(52, 211, 153, 0.20);
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ─── Base Resets ─── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-void);
+  color: var(--color-text-primary);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ─── Scrollbar Styling ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-void);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-void-lighter);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #333;
+}
+
+/* ─── Selection ─── */
+::selection {
+  background: rgba(120, 119, 198, 0.4);
+  color: #fff;
+}
