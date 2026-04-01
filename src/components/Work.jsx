@@ -193,7 +193,7 @@ export default function Work() {
     <section
       id="work"
       ref={sectionRef}
-      className="relative py-28 sm:py-36 overflow-hidden"
+      className="relative py-32 sm:py-40 overflow-hidden"
       style={{ backgroundColor: '#0A0A0A' }}
     >
       {/* Subtle top divider gradient */}
@@ -214,7 +214,7 @@ export default function Work() {
         variants={sectionVariants}
         initial="hidden"
         animate={isInView ? 'visible' : 'hidden'}
-        className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12"
+        className="relative z-10 max-w-7xl mx-auto px-6 md:px-12"
       >
         {/* ── Section Header ── */}
         <motion.div variants={headingVariants} className="mb-16 sm:mb-20">

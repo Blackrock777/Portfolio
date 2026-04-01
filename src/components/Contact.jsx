@@ -87,7 +87,7 @@ export default function Contact() {
     <section
       id="contact"
       ref={sectionRef}
-      className="relative py-28 sm:py-36 overflow-hidden"
+      className="relative py-32 sm:py-40 overflow-hidden"
       style={{ backgroundColor: '#0A0A0A' }}
     >
       {/* Top divider */}
@@ -117,7 +117,7 @@ export default function Contact() {
         variants={sectionVariants}
         initial="hidden"
         animate={isInView ? 'visible' : 'hidden'}
-        className="relative z-10 max-w-3xl mx-auto px-6 sm:px-8 lg:px-12"
+        className="relative z-10 max-w-3xl mx-auto px-6 md:px-12"
       >
         {/* ── Section Label ── */}
         <motion.div variants={fadeUp} className="mb-6">

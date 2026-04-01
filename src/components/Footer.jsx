@@ -42,7 +42,7 @@ export default function Footer() {
       {/* Top divider */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
         {/* ── Main Footer Grid ── */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-8 py-8">
           {/* Left — Name + location */}

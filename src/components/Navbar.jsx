@@ -23,14 +23,14 @@ export default function Navbar() {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-black/50 backdrop-blur-md border-b ${
         scrolled
-          ? 'bg-[rgba(10,10,10,0.72)] backdrop-blur-2xl border-b border-white/[0.06] shadow-[0_1px_40px_rgba(0,0,0,0.5)]'
-          : 'bg-transparent'
+          ? 'border-white/[0.08] shadow-[0_1px_40px_rgba(0,0,0,0.5)]'
+          : 'border-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="flex items-center justify-between h-[72px]">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <div className="flex items-center justify-between py-6">
           {/* ── Logo ── */}
           <motion.a
             href="#"
@@ -46,13 +46,13 @@ export default function Navbar() {
           </motion.a>
 
           {/* ── Desktop Links ── */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <motion.a
                 key={link.label}
                 href={link.href}
                 id={`nav-${link.label.toLowerCase()}`}
-                className="relative px-5 py-2 text-[14px] font-medium text-[#999] hover:text-white transition-colors duration-300 group"
+                className="relative py-2 text-[14px] font-medium text-[#999] hover:text-white transition-colors duration-300 group"
                 whileHover={{ y: -1 }}
                 whileTap={{ y: 0 }}
               >

@@ -44,7 +44,7 @@ export default function Hero() {
         variants={container}
         initial="hidden"
         animate="visible"
-        className="relative z-10 max-w-4xl mx-auto px-6 sm:px-8 text-center"
+        className="relative z-10 max-w-4xl mx-auto px-6 md:px-12 text-center flex flex-col items-center"
       >
         {/* Tag line chip */}
         <motion.div variants={fadeUp} className="mb-8">
@@ -57,22 +57,28 @@ export default function Hero() {
         {/* Main headline */}
         <motion.h1
           variants={fadeUp}
-          className="text-[clamp(2.2rem,6vw,4.5rem)] font-extrabold leading-[1.08] tracking-[-0.03em] text-white mb-7"
+          className="text-[clamp(2.4rem,6vw,4.8rem)] font-extrabold leading-[1.08] tracking-[-0.035em] text-white mb-8"
         >
           I build at the intersection
           <br />
-          <span className="bg-gradient-to-r from-purple-300 via-cyan-300 to-emerald-300 bg-clip-text text-transparent">
-            of business and deep-tech.
+          of business and{' '}
+          <span
+            className="text-white"
+            style={{
+              textShadow: '0 0 40px rgba(186, 210, 255, 0.25), 0 0 80px rgba(186, 210, 255, 0.1)',
+            }}
+          >
+            deep-tech.
           </span>
         </motion.h1>
 
         {/* Sub-paragraph */}
         <motion.p
           variants={fadeUp}
-          className="max-w-2xl mx-auto text-[clamp(1rem,1.8vw,1.2rem)] leading-relaxed text-[#888] font-normal mb-12"
+          className="max-w-2xl mx-auto text-[clamp(1rem,1.8vw,1.15rem)] leading-[1.75] text-neutral-400 font-normal mb-14"
         >
           I am{' '}
-          <span className="text-[#ccc] font-medium">Kapil Jeswani</span>, a
+          <span className="text-neutral-200 font-medium">Kapil Jeswani</span>, a
           Computer Engineer and GTM Strategist. I combine creative analytical
           thinking with modern tech to translate complex architectures into
           high-converting commercial solutions.
@@ -81,13 +87,13 @@ export default function Hero() {
         {/* CTAs */}
         <motion.div
           variants={fadeUp}
-          className="flex flex-wrap items-center justify-center gap-4"
+          className="flex flex-wrap items-center justify-center gap-6"
         >
           {/* Primary – View Work */}
           <motion.a
             href="#work"
             id="cta-view-work"
-            className="group relative inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-white text-[#0A0A0A] text-[15px] font-semibold transition-all duration-300 hover:shadow-[0_0_40px_rgba(255,255,255,0.15)]"
+            className="group inline-flex items-center gap-2.5 rounded-full px-8 py-3 bg-white text-black text-[15px] font-semibold transition-all duration-300 hover:shadow-[0_0_40px_rgba(255,255,255,0.12)]"
             whileHover={{ y: -3, scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
           >
@@ -111,7 +117,7 @@ export default function Hero() {
           <motion.a
             href="#contact"
             id="cta-lets-talk"
-            className="group relative inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full text-[15px] font-semibold text-white/90 border border-white/[0.12] bg-white/[0.03] backdrop-blur-sm transition-all duration-300 hover:border-white/[0.25] hover:bg-white/[0.06] hover:shadow-[0_0_30px_rgba(255,255,255,0.05)]"
+            className="group inline-flex items-center gap-2.5 rounded-full px-8 py-3 text-[15px] font-semibold text-white border border-white/20 bg-transparent transition-all duration-300 hover:border-white/40 hover:bg-white/[0.04]"
             whileHover={{ y: -3, scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
           >
@@ -135,7 +141,7 @@ export default function Hero() {
         {/* Scroll indicator */}
         <motion.div
           variants={fadeUp}
-          className="mt-20 flex flex-col items-center gap-2"
+          className="mt-24 flex flex-col items-center gap-2"
         >
           <span className="text-[11px] uppercase tracking-[0.2em] text-[#555] font-medium">
             Scroll
