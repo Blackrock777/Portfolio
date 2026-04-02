@@ -2,18 +2,16 @@
 
 /* ─── Custom Design Tokens ─── */
 @theme {
-  --color-void: #0A0A0A;
-  --color-void-light: #111111;
-  --color-void-lighter: #1A1A1A;
-  --color-surface: #141414;
-  --color-surface-hover: #1E1E1E;
-  --color-border-glass: rgba(255, 255, 255, 0.08);
-  --color-text-primary: #FAFAFA;
-  --color-text-secondary: #888888;
-  --color-text-muted: #666666;
-  --color-accent-glow: rgba(120, 119, 198, 0.35);
-  --color-accent-cyan: rgba(34, 211, 238, 0.25);
-  --color-accent-emerald: rgba(52, 211, 153, 0.20);
+  --color-void: #060606;
+  --color-void-light: #0e0e0e;
+  --color-void-lighter: #161616;
+  --color-surface: #111111;
+  --color-surface-hover: #1a1a1a;
+  --color-border-glass: rgba(255, 255, 255, 0.06);
+  --color-text-primary: #f0f0f0;
+  --color-text-secondary: #7a7a7a;
+  --color-text-muted: #4a4a4a;
+  --color-accent: #c8c8c8;
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
@@ -27,9 +25,21 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: initial; /* Lenis handles smooth scroll */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
 }
 
 body {
@@ -40,26 +50,61 @@ body {
   line-height: 1.6;
 }
 
-/* ─── Scrollbar Styling ─── */
-::-webkit-scrollbar {
-  width: 6px;
+/* ─── Hide default cursor on desktop ─── */
+@media (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
 }
 
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 4px;
+}
 ::-webkit-scrollbar-track {
   background: var(--color-void);
 }
-
 ::-webkit-scrollbar-thumb {
-  background: var(--color-void-lighter);
-  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 2px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: #333;
+  background: rgba(255, 255, 255, 0.15);
 }
 
 /* ─── Selection ─── */
 ::selection {
-  background: rgba(120, 119, 198, 0.4);
+  background: rgba(255, 255, 255, 0.12);
   color: #fff;
+}
+
+/* ─── Noise grain animation ─── */
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -10%); }
+  20% { transform: translate(-15%, 5%); }
+  30% { transform: translate(7%, -15%); }
+  40% { transform: translate(-5%, 15%); }
+  50% { transform: translate(-15%, 10%); }
+  60% { transform: translate(15%, 0%); }
+  70% { transform: translate(0%, 10%); }
+  80% { transform: translate(3%, -15%); }
+  90% { transform: translate(-10%, 10%); }
+}
+
+.noise-overlay {
+  animation: grain 0.8s steps(6) infinite;
+}
+
+/* ─── Text reveal clip ─── */
+.word-reveal {
+  overflow: hidden;
+  display: inline-block;
+}
+
+/* ─── Horizontal scrolling number for projects ─── */
+.project-number {
+  font-variant-numeric: tabular-nums;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.06);
+  -webkit-text-fill-color: transparent;
 }

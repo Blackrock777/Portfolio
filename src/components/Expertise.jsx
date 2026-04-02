@@ -1,141 +1,160 @@
-import { useRef } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 
-/* ─── Stats Data ─── */
-const stats = [
-  {
-    id: 1,
-    value: '80+',
-    label: 'Enterprise Accounts Analyzed',
-  },
-  {
-    id: 2,
-    value: 'C-Suite',
-    label: 'Technical Pitching',
-  },
-  {
-    id: 3,
-    value: 'Full-Cycle',
-    label: 'Outbound Sales',
-  },
-];
+/* ─── Count-up hook ─── */
+function useCountUp(target, duration = 2000, shouldStart = false) {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    if (!shouldStart) return;
+    let startTime;
+    const animate = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+      setCount(Math.floor(eased * target));
+      if (progress < 1) requestAnimationFrame(animate);
+    };
+    requestAnimationFrame(animate);
+  }, [target, duration, shouldStart]);
+  return count;
+}
 
-/* ─── Animation Variants ─── */
-const sectionVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
-};
-
+/* ─── Animation ─── */
 const fadeUp = {
-  hidden: { opacity: 0, y: 35, filter: 'blur(6px)' },
+  hidden: { opacity: 0, y: 40 },
   visible: {
     opacity: 1,
     y: 0,
-    filter: 'blur(0px)',
-    transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] },
+    transition: { duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] },
   },
 };
 
-/* ─── Stat Card (Clean Glass Panel) ─── */
-function StatCard({ stat }) {
-  return (
-    <motion.div
-      variants={fadeUp}
-      whileHover={{
-        y: -4,
-        scale: 1.015,
-        transition: { duration: 0.35, ease: 'easeOut' },
-      }}
-      className="group"
-    >
-      <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-6 transition-all duration-500 group-hover:bg-white/[0.08] group-hover:border-white/20">
-        <span className="block text-[clamp(1.8rem,3vw,2.4rem)] font-extrabold tracking-[-0.03em] text-white/90 leading-none mb-2 group-hover:text-white transition-colors duration-300">
-          {stat.value}
-        </span>
-        <p className="text-[14px] leading-relaxed text-neutral-500 group-hover:text-neutral-400 transition-colors duration-300">
-          {stat.label}
-        </p>
-      </div>
-    </motion.div>
-  );
-}
-
-/* ─── Expertise Section ─── */
 export default function Expertise() {
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, margin: '-80px' });
+  const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
+
+  const accountCount = useCountUp(80, 2000, isInView);
 
   return (
     <section
       id="expertise"
       ref={sectionRef}
-      className="relative pt-32 pb-32 sm:pt-40 sm:pb-40 mt-32 overflow-hidden"
-      style={{ backgroundColor: '#0A0A0A' }}
+      className="relative py-32 sm:py-44"
+      style={{ backgroundColor: '#060606' }}
     >
-      {/* Top divider */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
-
-      {/* Background ambient */}
-      <div
-        className="absolute top-1/3 right-0 w-[600px] h-[500px] rounded-full pointer-events-none"
-        style={{
-          background:
-            'radial-gradient(ellipse, rgba(34, 211, 238, 0.03) 0%, transparent 70%)',
-          filter: 'blur(80px)',
-        }}
-        aria-hidden="true"
-      />
-
+      {/* Section header */}
       <motion.div
-        variants={sectionVariants}
         initial="hidden"
         animate={isInView ? 'visible' : 'hidden'}
-        className="relative z-10 max-w-7xl mx-auto px-6 md:px-12"
+        variants={fadeUp}
+        className="max-w-7xl mx-auto px-8 lg:px-20 mb-20"
       >
-        {/* ── Section Label ── */}
-        <motion.div variants={fadeUp} className="mb-16 sm:mb-20">
-          <div className="flex items-center gap-4 mb-5">
-            <div className="h-px w-12 bg-gradient-to-r from-white/30 to-transparent" />
-            <span className="text-[12px] font-medium tracking-[0.2em] uppercase text-[#555]">
-              Expertise & Edge
-            </span>
-          </div>
-        </motion.div>
+        <div className="flex items-center gap-4 mb-6">
+          <span className="text-[13px] font-medium tracking-[0.15em] uppercase text-neutral-600 font-mono">
+            02
+          </span>
+          <div className="h-px flex-1 max-w-[60px] bg-white/[0.08]" />
+          <span className="text-[13px] font-medium tracking-[0.15em] uppercase text-neutral-600">
+            Expertise & Edge
+          </span>
+        </div>
+      </motion.div>
 
-        {/* ── Two-Column Layout ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-          {/* Left column — Heading + copy */}
-          <motion.div variants={fadeUp}>
-            <h2 className="text-[clamp(2rem,4.5vw,3.2rem)] font-extrabold tracking-[-0.04em] leading-[1.05] text-white mb-7">
-              FROM CODE
-              <br />
-              <span className="text-white">
+      {/* Bento Grid */}
+      <motion.div
+        initial="hidden"
+        animate={isInView ? 'visible' : 'hidden'}
+        variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+        className="max-w-7xl mx-auto px-8 lg:px-20"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {/* Large card — spans 2 cols */}
+          <motion.div
+            variants={fadeUp}
+            className="md:col-span-2 rounded-2xl border border-white/[0.05] bg-white/[0.02] p-10 sm:p-14 flex flex-col justify-between min-h-[320px] group hover:bg-white/[0.03] hover:border-white/[0.08] transition-all duration-700"
+            data-cursor-hover
+          >
+            <div>
+              <h2 className="text-[clamp(2rem,4.5vw,3.5rem)] font-extrabold tracking-[-0.04em] leading-[1] text-white mb-6">
+                FROM CODE
+                <br />
                 TO CLOSING.
-              </span>
-            </h2>
-
-            <p className="text-[clamp(0.95rem,1.6vw,1.1rem)] leading-loose text-neutral-500 max-w-lg">
-              With a foundation in software engineering and hands-on experience
-              in B2B technical sales, I don't just write code—I build products
-              that scale and sell.
-            </p>
-            <p className="mt-5 text-[clamp(0.95rem,1.6vw,1.1rem)] leading-loose text-neutral-600 max-w-lg">
-              Cultivated extreme discipline as a{' '}
-              <span className="text-neutral-300 font-medium">
-                National-Level 10m Pistol Shooter.
-              </span>
-            </p>
-
-            {/* Decorative line */}
-            <div className="mt-10 h-px w-24 bg-gradient-to-r from-white/15 to-transparent" />
+              </h2>
+              <p className="text-[clamp(0.9rem,1.4vw,1.05rem)] leading-[1.8] text-neutral-500 max-w-md">
+                With a foundation in software engineering and hands-on experience
+                in B2B technical sales, I don't just write code — I build products
+                that scale and sell.
+              </p>
+            </div>
+            <div className="mt-8 h-px w-16 bg-white/[0.08]" />
           </motion.div>
 
-          {/* Right column — Stat cards in clean vertical stack */}
-          <div className="flex flex-col gap-6 w-full max-w-sm lg:ml-auto">
-            {stats.map((stat) => (
-              <StatCard key={stat.id} stat={stat} />
-            ))}
-          </div>
+          {/* Stat 1 — Enterprise Accounts */}
+          <motion.div
+            variants={fadeUp}
+            className="rounded-2xl border border-white/[0.05] bg-white/[0.02] p-8 sm:p-10 flex flex-col justify-between min-h-[180px] group hover:bg-white/[0.03] hover:border-white/[0.08] transition-all duration-700"
+            data-cursor-hover
+          >
+            <span className="text-[clamp(2.5rem,5vw,4rem)] font-black tracking-[-0.03em] text-white leading-none">
+              {accountCount}+
+            </span>
+            <p className="text-[13px] font-medium tracking-wide uppercase text-neutral-600 mt-4">
+              Enterprise Accounts
+              <br />
+              Analyzed
+            </p>
+          </motion.div>
+
+          {/* Stat 2 — C-Suite */}
+          <motion.div
+            variants={fadeUp}
+            className="rounded-2xl border border-white/[0.05] bg-white/[0.02] p-8 sm:p-10 flex flex-col justify-between min-h-[180px] group hover:bg-white/[0.03] hover:border-white/[0.08] transition-all duration-700"
+            data-cursor-hover
+          >
+            <span className="text-[clamp(2rem,4vw,3rem)] font-black tracking-[-0.03em] text-white leading-none">
+              C-Suite
+            </span>
+            <p className="text-[13px] font-medium tracking-wide uppercase text-neutral-600 mt-4">
+              Technical
+              <br />
+              Pitching
+            </p>
+          </motion.div>
+
+          {/* Stat 3 — Full-Cycle */}
+          <motion.div
+            variants={fadeUp}
+            className="rounded-2xl border border-white/[0.05] bg-white/[0.02] p-8 sm:p-10 flex flex-col justify-between min-h-[180px] group hover:bg-white/[0.03] hover:border-white/[0.08] transition-all duration-700"
+            data-cursor-hover
+          >
+            <span className="text-[clamp(2rem,4vw,3rem)] font-black tracking-[-0.03em] text-white leading-none">
+              Full-Cycle
+            </span>
+            <p className="text-[13px] font-medium tracking-wide uppercase text-neutral-600 mt-4">
+              Outbound
+              <br />
+              Sales
+            </p>
+          </motion.div>
+
+          {/* Personal touch card */}
+          <motion.div
+            variants={fadeUp}
+            className="rounded-2xl border border-white/[0.05] bg-white/[0.02] p-8 sm:p-10 flex flex-col justify-between min-h-[180px] group hover:bg-white/[0.03] hover:border-white/[0.08] transition-all duration-700"
+            data-cursor-hover
+          >
+            <div>
+              <span className="text-[28px] mb-3 block">🎯</span>
+              <p className="text-[15px] font-semibold text-white/80 leading-snug">
+                National-Level
+                <br />
+                10m Pistol Shooter
+              </p>
+            </div>
+            <p className="text-[12px] text-neutral-600 mt-4 tracking-wide uppercase">
+              Extreme Discipline
+            </p>
+          </motion.div>
         </div>
       </motion.div>
     </section>
