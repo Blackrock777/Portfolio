@@ -65,13 +65,13 @@ export default function Hero() {
       ref={containerRef}
       onMouseMove={handleMouseMove}
       className="relative min-h-screen flex items-end overflow-hidden pb-24 sm:pb-32"
-      style={{ backgroundColor: '#060606' }}
+      style={{ backgroundColor: '#070b14' }}
     >
       {/* Mouse-reactive gradient mesh */}
       <motion.div
         className="absolute inset-0 pointer-events-none opacity-40"
         style={{
-          background: `radial-gradient(ellipse 50% 50% at ${gradientX}% ${gradientY}%, rgba(120, 119, 198, 0.15) 0%, transparent 70%)`,
+          background: `radial-gradient(ellipse 50% 50% at ${gradientX}% ${gradientY}%, rgba(99, 102, 241, 0.2) 0%, transparent 70%)`,
         }}
       />
 
@@ -80,7 +80,7 @@ export default function Hero() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse 80% 60% at 70% 80%, rgba(34, 211, 238, 0.04) 0%, transparent 60%)',
+            'radial-gradient(ellipse 80% 60% at 70% 80%, rgba(56, 189, 248, 0.04) 0%, transparent 60%)',
         }}
       />
 
@@ -88,7 +88,7 @@ export default function Hero() {
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: 'linear-gradient(to bottom, transparent 70%, #060606 100%)',
+          background: 'linear-gradient(to bottom, transparent 70%, #070b14 100%)',
         }}
       />
 
@@ -111,7 +111,7 @@ export default function Hero() {
             {headline3.map((w, i) => (
               <AnimatedWord key={w}>
                 {w === 'deep-tech.' ? (
-                  <span className="text-neutral-500">{w}</span>
+                  <span className="text-indigo-400/70">{w}</span>
                 ) : (
                   w
                 )}

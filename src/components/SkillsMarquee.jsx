@@ -53,7 +53,7 @@ export default function SkillsMarquee() {
     <section
       id="skills-marquee"
       className="relative py-24 sm:py-32 overflow-hidden"
-      style={{ backgroundColor: '#060606' }}
+      style={{ backgroundColor: '#070b14' }}
       aria-label="Core skills marquee"
       onMouseLeave={() => setHoveredSkill(null)}
     >
@@ -62,8 +62,8 @@ export default function SkillsMarquee() {
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.04] to-transparent" />
 
       {/* Edge fade masks */}
-      <div className="absolute top-0 bottom-0 left-0 w-32 sm:w-48 z-10 pointer-events-none bg-gradient-to-r from-[#060606] to-transparent" />
-      <div className="absolute top-0 bottom-0 right-0 w-32 sm:w-48 z-10 pointer-events-none bg-gradient-to-l from-[#060606] to-transparent" />
+      <div className="absolute top-0 bottom-0 left-0 w-32 sm:w-48 z-10 pointer-events-none bg-gradient-to-r from-[#070b14] to-transparent" />
+      <div className="absolute top-0 bottom-0 right-0 w-32 sm:w-48 z-10 pointer-events-none bg-gradient-to-l from-[#070b14] to-transparent" />
 
       {/* Hover detection layer */}
       <div

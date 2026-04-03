@@ -10,7 +10,7 @@ function useCountUp(target, duration = 2000, shouldStart = false) {
     const animate = (timestamp) => {
       if (!startTime) startTime = timestamp;
       const progress = Math.min((timestamp - startTime) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+      const eased = 1 - Math.pow(1 - progress, 3);
       setCount(Math.floor(eased * target));
       if (progress < 1) requestAnimationFrame(animate);
     };
@@ -18,6 +18,30 @@ function useCountUp(target, duration = 2000, shouldStart = false) {
   }, [target, duration, shouldStart]);
   return count;
 }
+
+/* ─── Skill categories ─── */
+const skillCategories = [
+  {
+    title: 'Engineering',
+    icon: '⚡',
+    skills: ['C++', 'Python', 'Solidity', 'JavaScript', 'Swift', 'SQL'],
+  },
+  {
+    title: 'Product & GTM',
+    icon: '🚀',
+    skills: ['Go-to-Market', 'Technical Pitching', 'Pipeline Mgmt', 'B2B Sales', 'Consultative Selling'],
+  },
+  {
+    title: 'Tools & Platforms',
+    icon: '🛠',
+    skills: ['Git', 'Docker', 'Figma', 'HubSpot', 'Postman', 'Linux'],
+  },
+  {
+    title: 'Systems & Design',
+    icon: '🧠',
+    skills: ['System Design', 'RESTful APIs', 'OOP', 'Data Structures', 'Algorithms', 'Agile'],
+  },
+];
 
 /* ─── Animation ─── */
 const fadeUp = {
@@ -40,7 +64,7 @@ export default function Expertise() {
       id="expertise"
       ref={sectionRef}
       className="relative py-32 sm:py-44"
-      style={{ backgroundColor: '#060606' }}
+      style={{ backgroundColor: '#070b14' }}
     >
       {/* Section header */}
       <motion.div
@@ -50,23 +74,51 @@ export default function Expertise() {
         className="max-w-7xl mx-auto px-8 lg:px-20 mb-20"
       >
         <div className="flex items-center gap-4 mb-6">
-          <span className="text-[13px] font-medium tracking-[0.15em] uppercase text-neutral-600 font-mono">
-            02
+          <span className="text-[13px] font-medium tracking-[0.15em] uppercase text-slate-600 font-mono">
+            —
           </span>
-          <div className="h-px flex-1 max-w-[60px] bg-white/[0.08]" />
-          <span className="text-[13px] font-medium tracking-[0.15em] uppercase text-neutral-600">
+          <span className="text-[13px] font-medium tracking-[0.15em] uppercase text-slate-600">
             Expertise & Edge
           </span>
         </div>
       </motion.div>
 
-      {/* Bento Grid */}
       <motion.div
         initial="hidden"
         animate={isInView ? 'visible' : 'hidden'}
         variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
         className="max-w-7xl mx-auto px-8 lg:px-20"
       >
+        {/* ─── Skill Categories Grid ─── */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+          {skillCategories.map((cat) => (
+            <motion.div
+              key={cat.title}
+              variants={fadeUp}
+              className="rounded-2xl border border-white/[0.05] bg-white/[0.015] p-6 sm:p-8 group hover:bg-white/[0.03] hover:border-indigo-500/10 transition-all duration-700"
+              data-cursor-hover
+            >
+              <div className="flex items-center gap-3 mb-5">
+                <span className="text-xl">{cat.icon}</span>
+                <h3 className="text-[14px] font-semibold text-white/80 tracking-wide uppercase">
+                  {cat.title}
+                </h3>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {cat.skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="px-3 py-1 rounded-full text-[11px] text-slate-500 border border-white/[0.04] group-hover:text-slate-400 group-hover:border-white/[0.08] transition-all duration-500"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* ─── Bento Grid ─── */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {/* Large card — spans 2 cols */}
           <motion.div
@@ -78,15 +130,15 @@ export default function Expertise() {
               <h2 className="text-[clamp(2rem,4.5vw,3.5rem)] font-extrabold tracking-[-0.04em] leading-[1] text-white mb-6">
                 FROM CODE
                 <br />
-                TO CLOSING.
+                <span className="text-indigo-400/60">TO CLOSING.</span>
               </h2>
-              <p className="text-[clamp(0.9rem,1.4vw,1.05rem)] leading-[1.8] text-neutral-500 max-w-md">
+              <p className="text-[clamp(0.9rem,1.4vw,1.05rem)] leading-[1.8] text-slate-500 max-w-md">
                 With a foundation in software engineering and hands-on experience
                 in B2B technical sales, I don't just write code — I build products
                 that scale and sell.
               </p>
             </div>
-            <div className="mt-8 h-px w-16 bg-white/[0.08]" />
+            <div className="mt-8 h-px w-16 bg-indigo-500/20" />
           </motion.div>
 
           {/* Stat 1 — Enterprise Accounts */}
@@ -98,7 +150,7 @@ export default function Expertise() {
             <span className="text-[clamp(2.5rem,5vw,4rem)] font-black tracking-[-0.03em] text-white leading-none">
               {accountCount}+
             </span>
-            <p className="text-[13px] font-medium tracking-wide uppercase text-neutral-600 mt-4">
+            <p className="text-[13px] font-medium tracking-wide uppercase text-slate-600 mt-4">
               Enterprise Accounts
               <br />
               Analyzed
@@ -114,7 +166,7 @@ export default function Expertise() {
             <span className="text-[clamp(2rem,4vw,3rem)] font-black tracking-[-0.03em] text-white leading-none">
               C-Suite
             </span>
-            <p className="text-[13px] font-medium tracking-wide uppercase text-neutral-600 mt-4">
+            <p className="text-[13px] font-medium tracking-wide uppercase text-slate-600 mt-4">
               Technical
               <br />
               Pitching
@@ -130,7 +182,7 @@ export default function Expertise() {
             <span className="text-[clamp(2rem,4vw,3rem)] font-black tracking-[-0.03em] text-white leading-none">
               Full-Cycle
             </span>
-            <p className="text-[13px] font-medium tracking-wide uppercase text-neutral-600 mt-4">
+            <p className="text-[13px] font-medium tracking-wide uppercase text-slate-600 mt-4">
               Outbound
               <br />
               Sales
@@ -151,7 +203,7 @@ export default function Expertise() {
                 10m Pistol Shooter
               </p>
             </div>
-            <p className="text-[12px] text-neutral-600 mt-4 tracking-wide uppercase">
+            <p className="text-[12px] text-slate-600 mt-4 tracking-wide uppercase">
               Extreme Discipline
             </p>
           </motion.div>

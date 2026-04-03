@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 
 const navLinks = [
+  { label: 'About', href: '#about' },
   { label: 'Work', href: '#work' },
-  { label: 'Expertise', href: '#expertise' },
+  { label: 'Experience', href: '#experience' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -41,7 +42,7 @@ export default function Navbar() {
       transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94], delay: 2 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
         scrolled
-          ? 'bg-[rgba(6,6,6,0.8)] backdrop-blur-xl border-b border-white/[0.04]'
+          ? 'bg-[rgba(7,11,20,0.85)] backdrop-blur-xl border-b border-white/[0.04]'
           : 'bg-transparent'
       }`}
     >
@@ -102,7 +103,7 @@ export default function Navbar() {
 
       {/* Scroll progress bar */}
       <motion.div
-        className="absolute bottom-0 left-0 h-[1px] bg-white/20"
+        className="absolute bottom-0 left-0 h-[1px] bg-indigo-500/50"
         style={{ width: progressWidth }}
       />
 
@@ -114,7 +115,7 @@ export default function Navbar() {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.4, ease: [0.76, 0, 0.24, 1] }}
-            className="md:hidden overflow-hidden bg-[rgba(6,6,6,0.95)] backdrop-blur-2xl border-b border-white/[0.04]"
+            className="md:hidden overflow-hidden bg-[rgba(7,11,20,0.95)] backdrop-blur-2xl border-b border-white/[0.04]"
           >
             <div className="px-6 py-6 flex flex-col gap-1">
               {navLinks.map((link, i) => (

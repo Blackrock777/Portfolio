@@ -1,17 +1,18 @@
 @import "tailwindcss";
 
-/* ─── Custom Design Tokens ─── */
+/* ─── Custom Design Tokens — Deep Midnight Navy ─── */
 @theme {
-  --color-void: #060606;
-  --color-void-light: #0e0e0e;
-  --color-void-lighter: #161616;
-  --color-surface: #111111;
-  --color-surface-hover: #1a1a1a;
-  --color-border-glass: rgba(255, 255, 255, 0.06);
-  --color-text-primary: #f0f0f0;
-  --color-text-secondary: #7a7a7a;
-  --color-text-muted: #4a4a4a;
-  --color-accent: #c8c8c8;
+  --color-void: #070b14;
+  --color-void-light: #0c1220;
+  --color-void-lighter: #111827;
+  --color-surface: #0f1629;
+  --color-surface-hover: #162033;
+  --color-border-glass: rgba(148, 163, 184, 0.08);
+  --color-text-primary: #e8edf5;
+  --color-text-secondary: #64748b;
+  --color-text-muted: #334155;
+  --color-accent: #818cf8;
+  --color-accent-dim: #6366f1;
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
@@ -65,16 +66,16 @@ body {
   background: var(--color-void);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(99, 102, 241, 0.2);
   border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(99, 102, 241, 0.35);
 }
 
 /* ─── Selection ─── */
 ::selection {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(99, 102, 241, 0.2);
   color: #fff;
 }
 
@@ -105,6 +106,17 @@ body {
 /* ─── Horizontal scrolling number for projects ─── */
 .project-number {
   font-variant-numeric: tabular-nums;
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.06);
+  -webkit-text-stroke: 1px rgba(148, 163, 184, 0.1);
   -webkit-text-fill-color: transparent;
+}
+
+/* ─── Accent glow utilities ─── */
+.glow-indigo {
+  box-shadow: 0 0 40px rgba(99, 102, 241, 0.08),
+              0 0 80px rgba(99, 102, 241, 0.04);
+}
+
+.glow-indigo-hover:hover {
+  box-shadow: 0 0 50px rgba(99, 102, 241, 0.12),
+              0 0 100px rgba(99, 102, 241, 0.06);
 }

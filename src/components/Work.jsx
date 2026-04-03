@@ -12,11 +12,22 @@ const projects = [
     description:
       'An autonomous trading bot leveraging sentiment analysis and on-chain data for decentralized prediction markets.',
     tags: ['Python', 'Next.js', 'Solidity', 'AI Prompting'],
-    accentColor: 'rgba(168, 85, 247, 0.5)',
+    accentColor: 'rgba(129, 140, 248, 0.5)',
   },
   {
     id: 2,
     num: '02',
+    title: 'AI-Powered GTM Intelligence Platform',
+    year: '2025',
+    category: 'Sales Tech & AI',
+    description:
+      'An agentic AI system that automates B2B lead scoring, ICP matching, and hyper-personalized outreach sequences — reducing sales cycle time by 40%.',
+    tags: ['Python', 'LLMs', 'React', 'HubSpot API', 'RAG'],
+    accentColor: 'rgba(99, 102, 241, 0.5)',
+  },
+  {
+    id: 3,
+    num: '03',
     title: 'Enterprise NLP Assistant',
     year: '2025',
     category: 'AI Infrastructure',
@@ -26,15 +37,26 @@ const projects = [
     accentColor: 'rgba(34, 211, 238, 0.5)',
   },
   {
-    id: 3,
-    num: '03',
+    id: 4,
+    num: '04',
+    title: 'Smart Contract Security Auditor',
+    year: '2024',
+    category: 'Web3 & Security',
+    description:
+      'A static analysis tool that scans Solidity smart contracts for common vulnerabilities, gas inefficiencies, and reentrancy patterns before deployment.',
+    tags: ['Solidity', 'Python', 'AST Parsing', 'DeFi'],
+    accentColor: 'rgba(52, 211, 153, 0.5)',
+  },
+  {
+    id: 5,
+    num: '05',
     title: 'CubeSat Telemetry Dashboard',
     year: '2023',
     category: 'Aerospace Tech',
     description:
       'Real-time flight software visualization and telemetry tracking for a 2nd-place winning hackathon project.',
     tags: ['C++', 'Next.js', 'Data Visualization'],
-    accentColor: 'rgba(52, 211, 153, 0.5)',
+    accentColor: 'rgba(56, 189, 248, 0.5)',
   },
 ];
 
@@ -152,7 +174,7 @@ export default function Work() {
       id="work"
       ref={sectionRef}
       className="relative py-32 sm:py-44"
-      style={{ backgroundColor: '#060606' }}
+      style={{ backgroundColor: '#070b14' }}
     >
       {/* Section header */}
       <motion.div

@@ -22,7 +22,7 @@ export default function PageLoader({ onComplete }) {
       {isLoading && (
         <motion.div
           className="fixed inset-0 z-[10000] flex items-center justify-center"
-          style={{ backgroundColor: '#060606' }}
+          style={{ backgroundColor: '#070b14' }}
           exit={{ y: '-100%' }}
           transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
         >

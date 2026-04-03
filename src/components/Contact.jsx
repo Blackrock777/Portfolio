@@ -20,7 +20,7 @@ function FloatingField({ id, label, type = 'text', isTextarea = false }) {
   const inputClasses = `
     w-full bg-transparent text-white text-[15px]
     pt-7 pb-3 border-b transition-all duration-500 outline-none
-    ${focused ? 'border-white/30' : 'border-white/[0.06] hover:border-white/[0.12]'}
+    ${focused ? 'border-indigo-400/40' : 'border-white/[0.06] hover:border-white/[0.12]'}
   `;
 
   const labelClasses = `
@@ -79,7 +79,7 @@ export default function Contact() {
       id="contact"
       ref={sectionRef}
       className="relative py-32 sm:py-44"
-      style={{ backgroundColor: '#060606' }}
+      style={{ backgroundColor: '#070b14' }}
     >
       <motion.div
         initial="hidden"
@@ -116,14 +116,14 @@ export default function Contact() {
             {/* Quick links */}
             <div className="mt-12 flex flex-col gap-4">
               <a
-                href="mailto:kapil@example.com"
+                href="mailto:kapiljeswani1610@gmail.com"
                 className="text-[14px] text-neutral-500 hover:text-white transition-colors duration-300 inline-flex items-center gap-2"
                 data-cursor-hover
               >
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                 </svg>
-                kapil@example.com
+                kapiljeswani1610@gmail.com
               </a>
               <span className="text-[14px] text-neutral-600 inline-flex items-center gap-2">
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>

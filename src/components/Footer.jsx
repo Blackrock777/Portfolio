@@ -35,7 +35,7 @@ export default function Footer() {
     <footer
       id="footer"
       className="relative py-12"
-      style={{ backgroundColor: '#060606' }}
+      style={{ backgroundColor: '#070b14' }}
     >
       <div className="h-px bg-white/[0.04] mb-12" />
 
