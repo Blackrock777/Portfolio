@@ -12,8 +12,6 @@ const hackathons = [
     year: '2025',
     location: 'Bucharest, Romania',
     role: 'Blockchain Developer',
-    result: 'Top 15 Finalist',
-    resultColor: 'text-amber-400',
     description: 'Collaborated within a 4-member international team to build a decentralized identity (dApp) solution focusing on secure authentication flows.',
     tags: ['Solidity', 'React', 'Web3.js', 'IPFS'],
   },
@@ -22,8 +20,6 @@ const hackathons = [
     year: '2024',
     location: 'Zurich, Switzerland',
     role: 'Full-Stack Developer',
-    result: 'Best Web3 Integration',
-    resultColor: 'text-indigo-400',
     description: "Built an on-chain reputation scoring system for DeFi protocols at Europe's largest hackathon, competing against 600+ teams across 3 tracks.",
     tags: ['Next.js', 'Solidity', 'The Graph', 'Chainlink'],
   },
@@ -32,8 +28,6 @@ const hackathons = [
     year: '2024',
     location: 'Helsinki, Finland',
     role: 'Product Lead',
-    result: "People's Choice Winner",
-    resultColor: 'text-emerald-400',
     description: 'Led product strategy and UX design for an AI-powered logistics optimization platform. Directed a 5-person cross-functional team through rapid prototyping sprints.',
     tags: ['Python', 'Figma', 'LLMs', 'GTM Strategy'],
   },
@@ -42,8 +36,6 @@ const hackathons = [
     year: '2023',
     location: 'Torino, Italy',
     role: 'Team Lead',
-    result: '2nd Place',
-    resultColor: 'text-amber-400',
     description: 'Led a multidisciplinary 5-member team through rapid algorithmic ideation, code delegation, and prototype execution. Delivered a high-impact technical pitch under a strict 48-hour deadline.',
     tags: ['C++', 'Embedded Systems', 'Real-Time OS', 'Flight Software'],
   },
@@ -52,8 +44,6 @@ const hackathons = [
     year: '2023',
     location: 'Global (Online)',
     role: 'Developer',
-    result: 'Honorable Mention',
-    resultColor: 'text-blue-400',
     description: 'Engaged in global, data-driven software challenges using sprint-based collaborative methodology. Built a satellite data visualization tool for climate monitoring.',
     tags: ['Python', 'Data Visualization', 'APIs', 'Geospatial'],
   },
@@ -98,14 +88,11 @@ export default function Hackathons() {
               className="group py-10 border-b border-white/[0.04] last:border-b-0 hover:bg-white/[0.015] -mx-4 px-4 rounded-xl transition-colors duration-500"
               data-cursor-hover
             >
-              {/* Top row: event + badge + year */}
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-2">
+              {/* Top row: event name + year (right-aligned) */}
+              <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-2">
                 <h3 className="text-[clamp(1.15rem,2.2vw,1.5rem)] font-bold text-white/90 group-hover:text-white transition-colors">
                   {hack.event}
                 </h3>
-                <span className={`text-[11px] font-bold tracking-widest uppercase ${hack.resultColor}`}>
-                  {hack.result}
-                </span>
                 <span className="text-[12px] font-mono text-slate-600 ml-auto">{hack.year}</span>
               </div>
 

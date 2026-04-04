@@ -123,9 +123,11 @@ export default function Expertise() {
           {/* Large card — spans 2 cols */}
           <motion.div
             variants={fadeUp}
-            className="md:col-span-2 rounded-2xl border border-white/[0.05] bg-white/[0.02] p-10 sm:p-14 flex flex-col justify-between min-h-[320px] group hover:bg-white/[0.03] hover:border-white/[0.08] transition-all duration-700"
+            className="md:col-span-2 rounded-2xl border border-white/[0.05] bg-white/[0.02] p-10 sm:p-14 flex flex-col justify-between min-h-[320px] group hover:bg-white/[0.03] hover:border-indigo-500/10 transition-all duration-700 overflow-hidden relative"
             data-cursor-hover
           >
+            {/* Top accent stripe */}
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-indigo-500/50 via-indigo-400/20 to-transparent" />
             <div>
               <h2 className="text-[clamp(2rem,4.5vw,3.5rem)] font-extrabold tracking-[-0.04em] leading-[1] text-white mb-6">
                 FROM CODE

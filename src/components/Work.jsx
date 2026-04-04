@@ -107,7 +107,7 @@ function ProjectCard({ project }) {
         <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-0 max-w-7xl mx-auto px-8 lg:px-20">
           {/* Number */}
           <div className="md:w-24 shrink-0">
-            <span className="project-number text-[clamp(2rem,4vw,3rem)] font-black text-transparent leading-none">
+            <span className="project-number text-[clamp(2rem,4vw,3rem)] font-black text-transparent leading-none group-hover:[text-shadow:0_0_30px_rgba(99,102,241,0.4)] transition-all duration-500">
               {project.num}
             </span>
           </div>
@@ -134,13 +134,13 @@ function ProjectCard({ project }) {
           {/* Arrow */}
           <div className="md:w-16 shrink-0 flex justify-end">
             <motion.div
-              className="text-neutral-700 group-hover:text-white transition-colors duration-300"
+              className="w-9 h-9 rounded-full border border-white/[0.06] flex items-center justify-center text-neutral-700 group-hover:text-white group-hover:border-indigo-500/40 group-hover:bg-indigo-500/10 transition-all duration-400"
               variants={{
-                hovered: { x: 4, rotate: -45, transition: { duration: 0.3 } },
+                hovered: { rotate: -45, scale: 1.1, transition: { duration: 0.3 } },
               }}
             >
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
               </svg>
             </motion.div>
           </div>

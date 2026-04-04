@@ -78,9 +78,14 @@ export default function Contact() {
     <section
       id="contact"
       ref={sectionRef}
-      className="relative py-32 sm:py-44"
+      className="relative py-32 sm:py-44 overflow-hidden"
       style={{ backgroundColor: '#070b14' }}
     >
+      {/* Ambient glow */}
+      <div
+        className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse 60% 60% at 50% 50%, rgba(99,102,241,0.07) 0%, transparent 70%)' }}
+      />
       <motion.div
         initial="hidden"
         animate={isInView ? 'visible' : 'hidden'}
@@ -103,12 +108,12 @@ export default function Contact() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32">
           {/* Left — Massive headline */}
           <motion.div variants={fadeUp}>
-            <h2 className="text-[clamp(2.5rem,6vw,5rem)] font-extrabold tracking-[-0.04em] leading-[0.95] text-white mb-8">
+            <h2 className="text-[clamp(2.5rem,6vw,5rem)] font-extrabold tracking-[-0.04em] leading-[0.92] text-white mb-8">
               LET'S BUILD
               <br />
-              SOMETHING.
+              <span className="text-indigo-300/90">SOMETHING.</span>
             </h2>
-            <p className="text-[clamp(0.9rem,1.4vw,1.05rem)] leading-[1.8] text-neutral-600 max-w-sm">
+            <p className="text-[clamp(0.9rem,1.4vw,1.05rem)] leading-[1.8] text-neutral-600 max-w-sm border-l border-indigo-500/20 pl-4">
               Have an idea, a project, or just want to connect?
               Drop me a line and let's make it happen.
             </p>
@@ -117,13 +122,13 @@ export default function Contact() {
             <div className="mt-12 flex flex-col gap-4">
               <a
                 href="mailto:kapiljeswani1610@gmail.com"
-                className="text-[14px] text-neutral-500 hover:text-white transition-colors duration-300 inline-flex items-center gap-2"
+                className="group text-[14px] text-neutral-500 hover:text-indigo-300 transition-colors duration-300 inline-flex items-center gap-3"
                 data-cursor-hover
               >
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                 </svg>
-                kapiljeswani1610@gmail.com
+                <span className="group-hover:translate-x-1 transition-transform duration-300">kapiljeswani1610@gmail.com</span>
               </a>
               <span className="text-[14px] text-neutral-600 inline-flex items-center gap-2">
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -150,20 +155,20 @@ export default function Contact() {
                 <motion.button
                   type="submit"
                   id="contact-submit"
-                  className="group flex items-center gap-3 text-[14px] font-medium text-white tracking-wide uppercase"
-                  whileHover={{ x: 4 }}
-                  whileTap={{ scale: 0.98 }}
+                  className="group inline-flex items-center gap-3 text-[13px] font-semibold text-white tracking-widest uppercase"
+                  whileHover={{ x: 5 }}
+                  whileTap={{ scale: 0.97 }}
                   data-cursor-hover
                 >
                   <span>Send Message</span>
                   <svg
-                    className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
+                    className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1.5"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
                     strokeWidth={1.5}
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
                   </svg>
                 </motion.button>
               </motion.div>
